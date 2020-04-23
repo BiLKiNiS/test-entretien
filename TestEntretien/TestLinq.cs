@@ -19,7 +19,9 @@ namespace TestEntretien
                 {"a",10 },{"c",22},{"b",7896}
             };
 
-      //a.Keys.
+      var union = a.Union(b);
+      var t = union.GroupBy(_ => _.Key).ToList().Select(g => g.Sum(z => z.Value));
+
     }
 
     /// <summary>
@@ -29,11 +31,25 @@ namespace TestEntretien
     {
       List<List<int>> datas = new List<List<int>>()
             {
-                new List<int>() { 1, 10, 20, 30, 45, 75 },
+                new List<int>() { 1, 10, 20, 30, 45, 75, 0 },
                 new List<int>() { 45, 2, 1, 4, 2, 2, 100 },
-                new List<int>() { 45, 2, 1, 4, 2, 2 }
+                new List<int>() { 45, 2, 1, 4, 2, 2, 0 }
             };
-      //datas.Aggregate(a => a.)
+
+      var e = datas.Select(_ => _.Count()).Max();
+
+      int ListLength = datas.First().Count;
+      var step1 = datas.SelectMany(x => x).ToList();
+      var step2 = step1.Select((v, i) => new { Value = v, Index = i % ListLength }).ToList();
+      var step3 = step2.GroupBy(x => x.Index).ToList();
+      var step4 = step3.Select(y => y.Sum(z => z.Value)).ToArray();
+
+      var query = datas.SelectMany(x => x)
+                         .Select((v, i) => new { Value = v, Index = i % ListLength })
+                         .GroupBy(x => x.Index)
+                         .Select(y => y.Sum(z => z.Value)).ToArray();
+
+      Console.WriteLine(string.Join(",", query));
 
 
     }
