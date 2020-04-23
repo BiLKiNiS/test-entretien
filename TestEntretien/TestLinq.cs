@@ -5,40 +5,45 @@ using System.Text;
 
 namespace TestEntretien
 {
-    public class TestLinq
+  public class TestLinq
+  {
+    public static void Sum2List()
     {
-        public static void Sum2List()
-        {
-            Dictionary<string, int> a = new Dictionary<string, int>()
+      Dictionary<string, int> a = new Dictionary<string, int>()
             {
                 {"a",1 },{"b",10},{"c",45}
             };
 
-            Dictionary<string, int> b = new Dictionary<string, int>()
+      Dictionary<string, int> b = new Dictionary<string, int>()
             {
                 {"a",10 },{"c",22},{"b",7896}
             };
-        }
 
-        /// <summary>
-        /// retourner la liste des sommes de chaque index des 3 listes
-        /// </summary>
-        public static void IndexAddition()
-        {
-            List<List<int>> datas = new List<List<int>>()
+      //a.Keys.
+    }
+
+    /// <summary>
+    /// retourner la liste des sommes de chaque index des 3 listes
+    /// </summary>
+    public static void IndexAddition()
+    {
+      List<List<int>> datas = new List<List<int>>()
             {
                 new List<int>() { 1, 10, 20, 30, 45, 75 },
                 new List<int>() { 45, 2, 1, 4, 2, 2, 100 },
                 new List<int>() { 45, 2, 1, 4, 2, 2 }
             };
-        }
+      //datas.Aggregate(a => a.)
 
-        /// <summary>
-        /// Fusionner toutes les intervalles qui se chevauchent, en utilisant LINQ
-        /// </summary>
-        public static void MergeInterval()
-        {
-            List<int[]> intervals = new List<int[]>()
+
+    }
+
+    /// <summary>
+    /// Fusionner toutes les intervalles qui se chevauchent, en utilisant LINQ
+    /// </summary>
+    public static void MergeInterval()
+    {
+      List<int[]> intervals = new List<int[]>()
             {
                 new int[]{ 1, 3 },
                 new int[]{ 2, 6},
@@ -47,7 +52,7 @@ namespace TestEntretien
                 new int[]{ 16, 19 },
                 new int[]{ 17, 25 },
             };
-            List<int[]> result = new List<int[]>();
-        }
+      List<int[]> result = new List<int[]>();
     }
+  }
 }

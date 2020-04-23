@@ -6,55 +6,75 @@ using System.Text;
 
 namespace TestEntretien
 {
-    public class TestAlgo
+  public class TestAlgo
+  {
+
+    /// <summary>
+    /// grouper les anagrammes 
+    /// 10 min
+    /// </summary>
+    public static void GroupAnagram()
     {
+      Console.WriteLine("GroupAnagram start");
+      string[] input = { "reza", "eat", "tea", "tan", "ate", "nat", "bat", "bta", "azer" };
 
-        /// <summary>
-        /// grouper les anagrammes 
-        /// 10 min
-        /// </summary>
-        public static void GroupAnagram()
-        {
-            Console.WriteLine("GroupAnagram start");
-            string[] input = { "reza","eat", "tea", "tan", "ate", "nat", "bat", "bta", "azer" };
+      var list = input.OrderBy(_ => _.Length);
 
-           
-        }
+      //var list2 = input.OrderBy(_ => _.Length);
 
-        public static void SortInt()
-        {
-            int[] numbers = Enumerable.Range(0, 10).OrderBy(xp => Guid.NewGuid()).ToArray();
-           
-           
-            
+      var newList = new Dictionary<string, string>();
 
+      foreach (var item in input)
+      {
+        newList.Add(item, string.Join("", item.OrderBy(_ => _).ToArray()));
+      }
 
-
-            Console.WriteLine(string.Join(",", numbers));
-           
-        }
+      var keys = newList.Values.Distinct();
+      foreach (var key in keys)
+      {
+        //newList.
+      }
 
 
-        /// <summary>
-        /// Reconstruire une liste en fusionnant les infos, de manière performante ( < 200ms pour 100_000 itérations)
-        /// 10 min
-        /// </summary>
-        public static void PerfSeach()
-        {
-            int count = 100_000;
-            IEnumerable<(string Id, string Name)> persons = Enumerable.Range(0, count)
-                .Select(i =>  (i.ToString(), $"username_{i}"));
-
-            IEnumerable<(string Id, string Email)> persons2 = Enumerable.Range(0, count)
-                .Select(i => (i.ToString(),  $"mail_{i}@citeo.com" ));
-
-            List<(string Id, string Email, string Name)> result = new List<(string Id, string Email, string Name)>();
-            Stopwatch watch = Stopwatch.StartNew();
-
-            // 
-            Console.WriteLine(watch.Elapsed.TotalSeconds);
+      Console.WriteLine("GroupAnagram start");
 
 
-        }
     }
+
+    public static void SortInt()
+    {
+      int[] numbers = Enumerable.Range(0, 10).OrderBy(xp => Guid.NewGuid()).ToArray();
+
+
+
+
+
+
+      Console.WriteLine(string.Join(",", numbers));
+
+    }
+
+
+    /// <summary>
+    /// Reconstruire une liste en fusionnant les infos, de manière performante ( < 200ms pour 100_000 itérations)
+    /// 10 min
+    /// </summary>
+    public static void PerfSeach()
+    {
+      int count = 100_000;
+      IEnumerable<(string Id, string Name)> persons = Enumerable.Range(0, count)
+          .Select(i => (i.ToString(), $"username_{i}"));
+
+      IEnumerable<(string Id, string Email)> persons2 = Enumerable.Range(0, count)
+          .Select(i => (i.ToString(), $"mail_{i}@citeo.com"));
+
+      List<(string Id, string Email, string Name)> result = new List<(string Id, string Email, string Name)>();
+      Stopwatch watch = Stopwatch.StartNew();
+
+      // 
+      Console.WriteLine(watch.Elapsed.TotalSeconds);
+
+
+    }
+  }
 }

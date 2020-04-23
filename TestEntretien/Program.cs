@@ -2,18 +2,18 @@
 using TestEntretien.Refactoring;
 namespace TestEntretien
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("starting..");
+      Console.WriteLine("starting..");
 
-            //TestAlgo.GroupAnagram();
-            TestLinq.IndexAddition();
-            //TestRefacto_3.Run();
+      //TestAlgo.GroupAnagram();
+      TestLinq.IndexAddition();
+      //TestRefacto_3.Run();
 
-            Console.WriteLine("complete");
-            Console.ReadLine();
-        }
+      Console.WriteLine("complete");
+      Console.ReadLine();
     }
+  }
 }
